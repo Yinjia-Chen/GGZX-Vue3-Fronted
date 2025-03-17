@@ -1,5 +1,3 @@
-import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
-
 // 对外暴露配置路由（常量路由）
 export const constantRoute = [
   // 登录

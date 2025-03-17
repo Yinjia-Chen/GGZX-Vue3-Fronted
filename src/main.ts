@@ -51,5 +51,8 @@ app.use(router)
 //   },
 // })
 
+// 引入路由鉴权文件
+import './permission'
+
 // 挂载应用实例对象
 app.mount('#app')
