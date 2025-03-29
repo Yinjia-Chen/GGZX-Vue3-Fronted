@@ -6,12 +6,7 @@
   <!-- 左侧面包屑 -->
   <el-breadcrumb separator=">">
     <!-- 面包屑需要动态展示路由名字与标题 -->
-    <el-breadcrumb-item
-      v-for="(item, index) in $route.matched"
-      :key="index"
-      v-show="item.meta.title"
-      :to="item.path"
-    >
+    <el-breadcrumb-item v-for="(item, index) in $route.matched" :key="index" v-show="item.meta.title" :to="item.path">
       <!-- 动态展示图标 -->
       <el-icon>
         <component :is="item.meta.icon"></component>
@@ -23,20 +18,20 @@
 </template>
 
 <script setup lang="ts">
-import useLayOutSettingStore from '@/store/modules/setting'
+import useLayOutSettingStore from '@/store/modules/setting';
 // 获取layout配置相关的仓库
-let LayOutSettingStore = useLayOutSettingStore()
+let LayOutSettingStore = useLayOutSettingStore();
 // 点击图标的方法
 const changeIcon = () => {
   // 图标进行切换
-  LayOutSettingStore.fold = !LayOutSettingStore.fold
-}
+  LayOutSettingStore.fold = !LayOutSettingStore.fold;
+};
 </script>
 
 <script lang="ts">
 export default {
   name: 'BreadCrumb',
-}
+};
 </script>
 
 <style scoped></style>

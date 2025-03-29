@@ -1,7 +1,7 @@
 <template>
   <div class="layout_container">
     <!-- 左侧菜单 -->
-    <div class="layout_slider">
+    <div class="layout_slider" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Logo></Logo>
       <!-- 展示菜单 -->
       <!-- 滚动组件 -->
@@ -19,17 +19,11 @@
       </el-scrollbar>
     </div>
     <!-- 顶部导航 -->
-    <div
-      class="layout_tabbar"
-      :class="{ fold: LayOutSettingStore.fold ? true : false }"
-    >
+    <div class="layout_tabbar" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Tabbar></Tabbar>
     </div>
     <!-- 内容展示区域 -->
-    <div
-      class="layout_main"
-      :class="{ fold: LayOutSettingStore.fold ? true : false }"
-    >
+    <div class="layout_main" :class="{ fold: LayOutSettingStore.fold ? true : false }">
       <Main></Main>
     </div>
   </div>
@@ -37,28 +31,28 @@
 
 <script setup lang="ts">
 // 引入路由
-import { useRoute } from 'vue-router'
+import { useRoute } from 'vue-router';
 // 引入左侧菜单logo子组件
-import Logo from './logo/index.vue'
+import Logo from './logo/index.vue';
 // 引入菜单组件
-import Menu from './menu/index.vue'
+import Menu from './menu/index.vue';
 // 引入右侧内容展示组件
-import Main from './main/index.vue'
+import Main from './main/index.vue';
 // 引入顶部tabbar组件
-import Tabbar from './tabbar/index.vue'
+import Tabbar from './tabbar/index.vue';
 
-import useUserStore from '@/store/modules/user'
-import useLayOutSettingStore from '@/store/modules/setting'
+import useUserStore from '@/store/modules/user';
+import useLayOutSettingStore from '@/store/modules/setting';
 // 获取用户相关的小仓库
-let userStore = useUserStore()
+let userStore = useUserStore();
 // 获取layout配置仓库
-let LayOutSettingStore = useLayOutSettingStore()
+let LayOutSettingStore = useLayOutSettingStore();
 </script>
 
 <script lang="ts">
 export default {
   name: 'Layout',
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -76,6 +70,9 @@ export default {
       .el-menu {
         border-right: none;
       }
+    }
+    &.fold {
+      width: $base-menu-min-width;
     }
   }
 
@@ -96,7 +93,6 @@ export default {
     position: absolute;
     width: calc(100% - $base-menu-width);
     height: calc(100vh - $base-tabbar-height);
-    background-color: yellowgreen;
     left: $base-menu-width;
     top: $base-tabbar-height;
     padding: 20px;
